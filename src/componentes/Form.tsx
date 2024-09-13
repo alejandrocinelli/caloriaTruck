@@ -1,5 +1,6 @@
-import { categories } from "../data/category"
 import { Dispatch, useState } from "react"
+import {v4 as uuidv4} from "uuid"
+import { categories } from "../data/category"
 import { Activity } from "../types"
 import { ActivityAction } from "../reducer/activityreduce"
 
@@ -7,7 +8,8 @@ type FormProps = {
   dispatch : Dispatch<ActivityAction>
 }
 
-const initialState = {
+const initialState : Activity = {
+  id : uuidv4(),
   category : 1,
   name : "", 
   calori : 0
@@ -38,7 +40,10 @@ const Form = ({dispatch} : FormProps) => {
     e.preventDefault()
    
     dispatch({ type : 'save-activity', payload : {newActivity : activity }})
-    setActivity(initialState)
+    setActivity({
+      ...activity,
+      id: uuidv4()
+    })
     
   }
   return (
