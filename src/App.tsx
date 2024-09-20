@@ -21,6 +21,7 @@ const  [state, dispatch] = useReducer(ActivityReducer , initialState)
       <div className=" m-auto max-w-4xl">
         <Form
         dispatch = {dispatch}
+        state = { state}
         />
       </div>
      </section>
@@ -28,6 +29,8 @@ const  [state, dispatch] = useReducer(ActivityReducer , initialState)
      <section className=" mx-auto p-10 max-w-4xl">
       <ActivityList
       activities = {state.activities}
+      dispatch = {dispatch}
+      
       /> 
      </section>
     </>
