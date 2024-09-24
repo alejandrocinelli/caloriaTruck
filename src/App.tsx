@@ -21,8 +21,8 @@ const canRestarApp = () => useMemo(()=> state.activities.length > 0 , [state.act
   return (
     <>
      <header className=" bg-neutral-500 py-3">
-      <div className=" max-w-4xl  mx-auto flex justify-between ">
-        <h1 className=" text-center text-xl  font-bold text-white uppercase">
+      <div className=" max-w-4xl  mx-auto flex justify-between items-center ">
+        <h1 className=" text-center text-xl font-bold text-white uppercase">
           Contador de Calorias
         </h1>
         <button className=" disabled:opacity-10 bg-slate-500 hover:bg-slate-600 cursor-pointer p-2 text-center rounded-lg text-sm font-bold text-white"
