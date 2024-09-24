@@ -25,7 +25,7 @@ const ActivityList = ({ activities , dispatch} : activityListProp  ) => {
     {activities.length === 0 ? <p className=" text-center font-semibold my-5"> No Hay Activiades o Comidas</p> :
    
         activities.map(activity =>(
-        <div key={activity.id} className=" px-5 py-10 bg-white mt-5 flex  justify-between"  > 
+        <div key={activity.id} className=" px-5 py-10 bg-white mt-5 flex  justify-between  shadow-slate-400"  > 
             <div className=" space-y-2  relative">
                 <p className= {`absolute -top-8 -left-8 px-10 py-2 text-white font-bold uppercase ${activity.category === 1 ?  'bg-green-600' : 'bg-red-500'}`}>
                 {categoriName(+activity.category)}</p>

@@ -1,18 +1,25 @@
 import { act } from "react-dom/test-utils"
 import { Activity } from "../types"
+import { parse } from "uuid"
 
 export type ActivityAction = 
 { type : 'save-activity' , payload : { newActivity : Activity}} |
 { type : 'set-activeId' , payload : { id : Activity['id']}} |
-{ type : 'delete-activity' , payload : { id : Activity['id']}} 
+{ type : 'delete-activity' , payload : { id : Activity['id']}} |
+{ type : 'resetapp'} 
 
 export type ActivityState = {
     activities : Activity[],
     activeId : Activity["id"]
 }
 
+const localStoreActivitis  = () : Activity [] =>{
+    const activitis = localStorage.getItem("activities")
+    return activitis ? JSON.parse(activitis) : []
+}
+
 export const initialState : ActivityState = {
-    activities : [],
+    activities : localStoreActivitis(),
     activeId : ''
 }
 
@@ -51,6 +58,14 @@ export const ActivityReducer = ( state : ActivityState = initialState , action :
             ...state,
             activities : state.activities.filter(activity =>  activity.id !== action.payload.id)
         }
+    }
+
+    if(action.type === 'resetapp') {
+        return {
+            activities : [] ,
+            activeId : ''
+        }
+
     }
 
     return state
